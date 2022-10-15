@@ -1,4 +1,4 @@
-DROP TABLE users
+
 --1. Create table Users
 CREATE TABLE users(
 id SERIAL PRIMARY KEY,
