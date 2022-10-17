@@ -921,135 +921,137 @@ VALUES
 
 --8. Create table Pilot
 CREATE TABLE pilot(
-id SERIAL PRIMARY KEY,
+id SERIAL,
   name_id VARCHAR (30) NOT NULL,
   status_id INT,
   cap INT,
   garment INT,
-  face INT
+  face INT,
+	PRIMARY KEY(id, status_id)
   );
   
   --Data for table Pilot
-  INSERT INTO pilot (name_id,status_id,cap,garment,face)
-VALUES
-  ('Lamar',1,37,89,60),
-  ('Theodore',1,75,61,42),
-  ('Timon',2,95,75,38),
-  ('Graiden',1,82,56,71),
-  ('Harlan',1,17,26,51),
-  ('Hanna',1,0,67,24),
-  ('Ella',2,3,74,2),
-  ('Neil',2,58,69,71),
-  ('Sylvester',2,10,30,27),
-  ('Sade',2,28,50,7);
 INSERT INTO pilot (name_id,status_id,cap,garment,face)
 VALUES
-  ('Herrod',1,75,85,85),
-  ('Christopher',2,46,38,41),
-  ('Lois',2,35,54,2),
-  ('Caleb',2,79,33,56),
-  ('Rowan',2,2,55,8),
-  ('Dean',2,98,78,8),
-  ('Abra',2,83,11,72),
-  ('Wanda',2,50,47,1),
-  ('Oren',2,94,83,73),
-  ('Morgan',1,50,57,43);
+  ('Clare',1,96,34,98),
+  ('Ella',1,9,59,60),
+  ('Donna',1,14,86,1),
+  ('Amena',2,50,1,94),
+  ('Gay',2,65,3,98),
+  ('Penelope',1,49,99,100),
+  ('Ivan',2,59,67,54),
+  ('Kevin',2,83,57,8),
+  ('Lunea',1,17,40,1),
+  ('Lenore',1,56,17,23);
 INSERT INTO pilot (name_id,status_id,cap,garment,face)
 VALUES
-  ('August',1,57,63,36),
-  ('Aphrodite',1,89,34,95),
-  ('Cleo',2,63,84,98),
-  ('Julian',2,74,68,81),
-  ('Stella',2,0,30,21),
-  ('Hanna',2,70,45,32),
-  ('Jaime',1,46,97,85),
-  ('Amaya',2,13,27,44),
-  ('Cynthia',2,40,29,74),
-  ('Jessamine',1,86,1,88);
+  ('Jordan',2,77,45,10),
+  ('Ginger',2,28,69,73),
+  ('Kim',2,95,71,53),
+  ('Bryar',2,48,39,19),
+  ('Colleen',2,67,80,1),
+  ('Jenette',2,18,76,73),
+  ('Paki',2,44,10,70),
+  ('Isadora',2,19,59,5),
+  ('Kelsey',2,19,1,17),
+  ('Quon',1,46,79,88);
 INSERT INTO pilot (name_id,status_id,cap,garment,face)
 VALUES
-  ('Liberty',1,91,40,2),
-  ('Ignacia',2,58,23,45),
-  ('Imogene',1,30,84,23),
-  ('Randall',2,8,86,39),
-  ('Iliana',1,55,94,19),
-  ('Ray',2,4,31,11),
-  ('Yolanda',1,28,9,15),
-  ('Xander',1,4,53,48),
-  ('Carolyn',2,19,40,82),
-  ('Akeem',2,8,61,39);
+  ('Alyssa',1,69,97,30),
+  ('Sonya',1,30,71,75),
+  ('Hannah',1,4,4,92),
+  ('Quemby',1,31,44,24),
+  ('Micah',1,62,57,26),
+  ('Stewart',1,6,95,98),
+  ('Oliver',2,32,8,27),
+  ('Herrod',2,91,2,57),
+  ('Benedict',1,2,59,75),
+  ('Grady',1,47,80,56);
 INSERT INTO pilot (name_id,status_id,cap,garment,face)
 VALUES
-  ('Salvador',1,46,20,32),
-  ('Yuli',1,93,26,5),
-  ('Samuel',1,4,78,95),
-  ('Sydnee',2,95,68,56),
-  ('Hope',1,75,5,57),
-  ('Reed',1,39,41,21),
-  ('Rudyard',1,88,26,62),
-  ('Kermit',2,26,86,85),
-  ('Ahmed',1,28,63,73),
-  ('Rhona',2,75,40,50);
+  ('Cruz',2,92,79,4),
+  ('Laith',2,30,58,12),
+  ('Nicholas',1,2,61,10),
+  ('Elizabeth',1,56,23,42),
+  ('Chaim',1,5,85,69),
+  ('Susan',2,64,30,66),
+  ('Haviva',1,24,96,36),
+  ('Keefe',2,11,99,84),
+  ('Iris',2,26,62,54),
+  ('Emmanuel',1,37,35,44);
 INSERT INTO pilot (name_id,status_id,cap,garment,face)
 VALUES
-  ('Ariel',2,86,97,23),
-  ('Ramona',2,12,63,69),
-  ('Price',1,26,59,80),
-  ('Tara',2,30,29,77),
-  ('Todd',2,73,67,50),
-  ('Avram',2,43,100,61),
-  ('Jason',1,98,34,48),
-  ('Colby',2,43,87,6),
-  ('Keaton',2,48,27,23),
-  ('Dara',2,27,73,22);
+  ('Hector',2,98,71,94),
+  ('Harlan',1,91,19,16),
+  ('Halla',2,76,47,96),
+  ('Arthur',2,45,34,76),
+  ('Illana',1,32,6,49),
+  ('Rinah',2,92,93,35),
+  ('Bo',2,2,53,29),
+  ('Samson',2,44,73,96),
+  ('Baxter',1,67,5,39),
+  ('Jolene',2,22,87,8);
 INSERT INTO pilot (name_id,status_id,cap,garment,face)
 VALUES
-  ('Destiny',1,41,50,70),
-  ('Graham',2,56,12,41),
-  ('Dahlia',1,33,51,8),
-  ('Colt',2,18,91,12),
-  ('Scarlett',2,59,3,44),
-  ('Wanda',2,53,73,27),
-  ('Diana',1,49,30,78),
-  ('Rae',2,87,59,84),
-  ('Zia',2,37,7,91),
-  ('Unity',1,78,8,87);
+  ('Cameran',2,49,90,98),
+  ('Audra',2,56,69,41),
+  ('Oliver',2,89,51,72),
+  ('Caleb',2,80,27,91),
+  ('Constance',2,50,93,31),
+  ('Zena',1,33,90,37),
+  ('Tashya',1,10,68,77),
+  ('Sasha',1,23,62,84),
+  ('Keith',1,16,98,39),
+  ('Gabriel',1,62,17,47);
 INSERT INTO pilot (name_id,status_id,cap,garment,face)
 VALUES
-  ('Raven',1,3,36,14),
-  ('Athena',2,63,44,29),
-  ('Patricia',1,90,89,71),
-  ('Trevor',2,35,85,22),
-  ('Teegan',2,32,43,64),
-  ('Ivana',1,2,39,51),
-  ('Leroy',2,0,21,68),
-  ('Quintessa',1,36,94,36),
-  ('Damon',2,7,65,37),
-  ('Zeph',1,20,47,59);
+  ('Cheryl',2,64,48,2),
+  ('Fleur',2,76,56,8),
+  ('Tamekah',2,20,19,45),
+  ('Alfonso',2,73,5,14),
+  ('Stone',1,8,68,34),
+  ('Harper',1,17,38,68),
+  ('Mara',2,63,53,50),
+  ('George',1,74,51,63),
+  ('Gisela',1,83,84,86),
+  ('Tucker',2,56,66,92);
 INSERT INTO pilot (name_id,status_id,cap,garment,face)
 VALUES
-  ('Quynn',2,96,86,53),
-  ('Hanna',1,65,21,89),
-  ('Gabriel',2,60,43,19),
-  ('Rajah',1,81,29,68),
-  ('Joel',1,63,68,27),
-  ('Debra',1,89,64,66),
-  ('Hayes',2,66,46,28),
-  ('Ivy',2,30,99,50),
-  ('Emily',2,96,19,57),
-  ('Wang',2,44,50,65);
+  ('Alisa',2,69,70,30),
+  ('Ella',1,24,89,89),
+  ('Myles',2,17,90,4),
+  ('Whilemina',2,37,21,72),
+  ('Madeline',1,24,0,42),
+  ('Axel',1,68,47,36),
+  ('Hiram',2,40,30,16),
+  ('Belle',1,99,33,38),
+  ('Ivor',1,76,100,32),
+  ('Dustin',2,41,16,47);
 INSERT INTO pilot (name_id,status_id,cap,garment,face)
 VALUES
-  ('Lila',1,0,94,94),
-  ('Magee',2,8,41,80),
-  ('Jade',1,97,60,86),
-  ('Brent',2,49,51,38),
-  ('Nadine',1,57,67,74),
-  ('Denton',2,2,37,21),
-  ('Macon',1,91,50,60),
-  ('Uriel',2,29,34,22),
-  ('Barclay',1,5,100,65),
-  ('Alfonso',1,47,0,79);
+  ('Holmes',2,44,20,42),
+  ('Alana',2,93,24,18),
+  ('Malcolm',1,9,54,86),
+  ('Kermit',1,37,48,43),
+  ('Kirsten',1,68,15,67),
+  ('Ifeoma',2,27,65,39),
+  ('Kelly',1,88,23,18),
+  ('Celeste',1,83,99,71),
+  ('Cara',1,92,55,58),
+  ('Stacy',2,35,62,85);
+INSERT INTO pilot (name_id,status_id,cap,garment,face)
+VALUES
+  ('Levi',1,94,70,62),
+  ('Holmes',2,12,32,77),
+  ('Sydney',1,35,65,51),
+  ('Jessica',2,89,73,63),
+  ('Madonna',2,46,36,30),
+  ('Buckminster',1,42,43,79),
+  ('Noel',2,38,12,68),
+  ('TaShya',1,99,79,14),
+  ('Ayanna',1,96,46,51),
+  ('Malik',1,5,11,9);
+
 
 
   --9. Create table Co_Pilot
@@ -1316,13 +1318,16 @@ VALUES
 
 
 
-  --11. Create table Championship_statuses  
+ --11. Create table Championship_statuses 
 CREATE TABLE championship_statuses (
-id SERIAL PRIMARY KEY,
-name VARCHAR(30) UNIQUE
+id SERIAL ,
+status_name VARCHAR(30) UNIQUE,
+  status_id int UNIQUE,
+  PRIMARY KEY(id,status_id )
 );  
---Data for table championship_statuses
-INSERT INTO championship_statuses (name)
+  --Add Data for table championship_statuses
+  
+  INSERT INTO championship_statuses (status_name,status_id)
 VALUES
-  ('loss'),
-  ('win');
+  ('win',2),
+  ('loss',1),
