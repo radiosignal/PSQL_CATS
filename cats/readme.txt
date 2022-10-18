@@ -21,3 +21,4 @@ started_at::varchar(4) AS start_at_year,
 (SELECT(SELECT champ_result::championship_result  FROM championship_statuses WHERE pilot.status_id = championship_statuses.id ) status_id FROM pilot WHERE pilot.id=championship.id)AS result
 FROM championship
 ORDER BY started_at  DESC 
+/
