@@ -1,7 +1,9 @@
-//
+
 --mult_table_requests
 --5.1
-
+-- ВЫбираем из трех таблиц номер участника(table car.car_id ), установленное вооружение(table weapon.weapon_name),
+-- берем столбец убойной силы (table weapon.atack) как основу для группирования и в порядке убывания определяем 
+-- номер машины с наибольшими убойными показателямии и ее характиристики.
 
 SELECT id AS car_id,
 (SELECT weapon_name  FROM weapon WHERE weapon.id = car.id ),
@@ -9,7 +11,11 @@ SELECT id AS car_id,
 (SELECT  health AS car_health FROM body WHERE body.id = car.id )
 FROM car GROUP BY car_id ORDER BY car_force DESC LIMIT 10;
 
+
 --5.2 
+--Определяем в каком чемпионате (championship_name), в какой лиге championship_level_name, в каком году(started_at) и с каким результатом(status_name) 
+-- участник(name_id) завершил чемпионат.
+
 SELECT championship_name, 
 championship_level_name,
 started_at::varchar(4) AS start_at_year,
@@ -22,15 +28,19 @@ ORDER BY started_at  DESC
 
 --requests_upon_joined_tables
 --6.1
+--Определяем пилотов победителей
+
 SELECT 
 status_name,  
 pilot.*
 FROM championship_statuses
 LEFT JOIN pilot
 ON pilot.status_id = championship_statuses.id
-
+WHERE status_name = 'win';
 
 --6.2
+--Определяем пилотов, номера тачек, вид оружия, ник участника по силам выше среднего 
+
 SELECT DISTINCT
 name_id AS Pilot_name,
 car.id AS CAR_number,
@@ -45,7 +55,7 @@ ON car.id = pilot.id
 RIGHT JOIN weapon
 ON weapon.id = car.id
 
-WHERE weapon.atack >= (SELECT AVG( weapon.atack)FROM weapon) 
+WHERE weapon.atack >= (SELECT AVG( weapon.atack)FROM weapon) AND users.nick_name != 'NULL'
 ORDER BY weapon.atack  LIMIT 10;
 
 
@@ -70,8 +80,10 @@ ON weapon.id = car.id
 JOIN championship
 ON pilot.id = championship.id;
 
-SELECT DISTINCT * FROM pilot_features WHERE started_at > (current_timestamp - interval '1 year');
+--Выбираем из выборки представленной запросом pilot_features участников с атрибутами стартоваших за последнй год.
+SELECT DISTINCT * FROM pilot_features WHERE started_at > (current_timestamp - interval '1 year') AND user_nick != 'NULL');
 
+--Выбираем из выборки представленной запросом pilot_features участников на тачке с номером 5.
 SELECT DISTINCT * FROM pilot_features WHERE user_nick != 'NULL' AND car_number = '5';
 
 --7.2
@@ -84,6 +96,7 @@ FROM championship_statuses
 LEFT JOIN pilot
 ON pilot.status_id = championship_statuses.id
 
+--Выбираем победителей из представления.
 SELECT * FROM pilot_table WHERE status_name = 'win';
 
 
@@ -104,6 +117,7 @@ LIMIT 1;
 $$
 LANGUAGE SQL;
 
+--функция возвращает наибольшее значение убойки
 SELECT mighty_player();
 
 
@@ -118,6 +132,7 @@ WHERE id = id;
 $$
 LANGUAGE SQL;
 
+--функция возвращает значение убойки по заданному id.
 SELECT attacker_by_id(7);
 
 
@@ -125,6 +140,7 @@ SELECT attacker_by_id(7);
 
 --Create trigger
 --9.1 
+Триггер на соответствие id пилота к id пользовтеля.
 
 CREATE OR REPLACE FUNCTION update_pilot_trigger()
 RETURNS TRIGGER AS
@@ -153,8 +169,11 @@ SELECT * FROM users WHERE id = 33;
 
 DROP TRIGGER IF EXISTS update_pilot_trigger ON championship;
 
+
+
+
 3
-WITH selected_car AS (
+EXPLAIN ANALYZE WITH selected_car AS (
 SELECT 
 car.id AS car_ID,
 body.body_name AS car_body,
