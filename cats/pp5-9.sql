@@ -1,5 +1,7 @@
 
 --mult_table_requests
+
+
 --5.1
 -- ВЫбираем из трех таблиц номер участника(table car.car_id ), установленное вооружение(table weapon.weapon_name),
 -- берем столбец убойной силы (table weapon.atack) как основу для группирования и в порядке убывания определяем 
@@ -23,7 +25,7 @@ started_at::varchar(4) AS start_at_year,
 (SELECT(SELECT status_name  FROM championship_statuses WHERE pilot.status_id = championship_statuses.id ) status_id FROM pilot WHERE pilot.id=championship.id)AS result
 FROM championship
 ORDER BY started_at  DESC 
-
+Минусом данных выборок являются коррелирующие подзапросы(Долгий-длительный в обработке и не прозрачный подход к написанию самого запроса)
 
 
 --requests_upon_joined_tables
