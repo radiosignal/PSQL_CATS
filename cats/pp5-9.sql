@@ -22,7 +22,7 @@ SELECT championship_name,
 championship_level_name,
 started_at::varchar(4) AS start_at_year,
 (SELECT name_id FROM pilot WHERE pilot.id=championship.id),
-(SELECT(SELECT status_name  FROM championship_statuses WHERE pilot.status_id = championship_statuses.id ) status_id FROM pilot WHERE pilot.id=championship.id)AS result
+(SELECT(SELECT champ_result::championship_result  FROM championship_statuses WHERE pilot.status_id = championship_statuses.id ) status_id FROM pilot WHERE pilot.id=championship.id)AS result
 FROM championship
 ORDER BY started_at  DESC 
 Минусом данных выборок являются коррелирующие подзапросы(Долгий-длительный в обработке и не прозрачный подход к написанию самого запроса)
